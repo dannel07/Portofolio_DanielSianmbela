@@ -1,6 +1,7 @@
 // ==================== Internationalization ====================
 const translations = {
   id: {
+    site_title: 'Daniel Sinambela | Portfolio',
     nav_about: 'Tentang',
     nav_skills: 'Keahlian',
     nav_projects: 'Proyek',
@@ -13,6 +14,7 @@ const translations = {
     hero_cta_projects: 'Lihat Proyek',
     hero_cta_contact: 'Hubungi Saya',
     hero_scroll: 'Scroll ke bawah',
+    hero_image_alt: 'Foto profil Daniel Sinambela',
     about_label: 'TENTANG SAYA',
     about_title: 'Membangun Masa Depan',
     about_title_accent: 'Melalui Teknologi',
@@ -103,9 +105,11 @@ const translations = {
     form_message_ph: 'Tulis pesan Anda di sini...',
     form_submit: 'Kirim Pesan',
     form_success: 'Pesan berhasil dikirim! Saya akan segera merespons.',
+    footer_copy: '© 2024 Daniel Sinambela. Semua hak dilindungi.',
     footer_rights: 'All rights reserved.',
   },
   en: {
+    site_title: 'Daniel Sinambela | Portfolio',
     nav_about: 'About',
     nav_skills: 'Skills',
     nav_projects: 'Projects',
@@ -118,6 +122,7 @@ const translations = {
     hero_cta_projects: 'View Projects',
     hero_cta_contact: 'Contact Me',
     hero_scroll: 'Scroll down',
+    hero_image_alt: 'Daniel Sinambela profile photo',
     about_label: 'ABOUT ME',
     about_title: 'Building the Future',
     about_title_accent: 'Through Technology',
@@ -208,6 +213,7 @@ const translations = {
     form_message_ph: 'Write your message here...',
     form_submit: 'Send Message',
     form_success: 'Message sent successfully! I will respond shortly.',
+    footer_copy: '© 2024 Daniel Sinambela. All rights reserved.',
     footer_rights: 'All rights reserved.',
   }
 };
@@ -217,6 +223,7 @@ let currentLang = 'id';
 function setLanguage(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
+  document.title = translations[lang].site_title || document.title;
 
   // Update text content
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -235,6 +242,13 @@ function setLanguage(lang) {
     const key = el.getAttribute('data-i18n-placeholder');
     if (translations[lang][key]) {
       el.placeholder = translations[lang][key];
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    const key = el.getAttribute('data-i18n-alt');
+    if (translations[lang][key]) {
+      el.alt = translations[lang][key];
     }
   });
 
