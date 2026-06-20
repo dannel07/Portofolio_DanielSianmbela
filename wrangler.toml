@@ -2,6 +2,10 @@ name = "Portofolio_DanielSianmbela"
 compatibility_date = "2026-06-20"
 pages_build_output_dir = "."
 
+# Assets configuration for Pages
+[site]
+bucket = "."
+
 # Uncomment and update with your actual D1 database ID after creating it
 # [[d1_databases]]
 # binding = "PORTFOLIO_DB"
