@@ -1,9 +1,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-family: 'Inter', sans-serif; }
-body { overflow-x: hidden; }
+html { font-family: 'Inter', sans-serif; background: #030014; }
+body { overflow-x: hidden; background: #030014; color: #e2e8f0; }
 
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #22c55e, #8b5cf6);
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
   background-size: 200% 200%;
   animation: gradientShift 4s ease infinite;
   -webkit-background-clip: text;
@@ -115,7 +115,7 @@ body { overflow-x: hidden; }
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #22c55e);
+  background: linear-gradient(90deg, #6366f1, #a855f7);
   transition: width 0.3s ease;
 }
 
@@ -130,15 +130,19 @@ body { overflow-x: hidden; }
 }
 
 .hero-bg {
-  background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.15) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 50%, rgba(34,197,94,0.1) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.1) 0%, transparent 50%);
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(168,85,247,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #030014 0%, #050816 100%);
 }
 
 .dark .hero-bg {
-  background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.1) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 50%, rgba(34,197,94,0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.08) 0%, transparent 50%);
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.16) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(168,85,247,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(236,72,153,0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #030014 0%, #050816 100%);
 }
 
 .particle {
@@ -155,30 +159,30 @@ body { overflow-x: hidden; }
 }
 
 .timeline-line {
-  background: linear-gradient(180deg, #3b82f6, #22c55e, #8b5cf6);
+  background: linear-gradient(180deg, #6366f1, #a855f7, #ec4899);
 }
 
 .timeline-dot {
-  box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.2);
 }
 
 .dark .timeline-dot {
-  box-shadow: 0 0 0 4px rgba(59,130,246,0.1);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-.dark ::-webkit-scrollbar-track { background: #1e293b; }
-::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #3b82f6, #22c55e); border-radius: 4px; }
+::-webkit-scrollbar-track { background: #050816; }
+.dark ::-webkit-scrollbar-track { background: #050816; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #6366f1, #a855f7); border-radius: 4px; }
 
 .code-window {
-  border: 1px solid #334155;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   overflow: hidden;
 }
 
 .code-window-header {
-  background: #1e293b;
+  background: #0f172a;
   padding: 8px 12px;
   display: flex;
   gap: 6px;

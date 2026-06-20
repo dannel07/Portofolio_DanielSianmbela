@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daniel Sinambela — Portfolio</title>
+  <title>Daniel Sinambela | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.1.0/index.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/fontsource-jetbrains-mono@5.1.0/index.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     }
   </script>
 </head>
-<body class="font-sans bg-white text-dark-800 dark:bg-dark-950 dark:text-dark-100 transition-colors duration-500">
+<body class="font-sans bg-[#030014] text-slate-100 transition-colors duration-500">
 
   <!-- Navigation -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
@@ -35,38 +35,37 @@
       <div class="flex items-center justify-between h-16 lg:h-20">
         <a href="#hero" class="text-xl font-bold tracking-tight">
           <span class="gradient-text">DS</span>
-          <span class="dark:text-dark-100 text-dark-800">.</span>
+          <span class="text-white">.</span>
         </a>
 
         <!-- Desktop Nav -->
         <div class="hidden md:flex items-center gap-1">
-          <a href="#about" class="nav-link px-4 py-2 text-sm font-medium dark:text-dark-300 text-dark-600 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav_about">Tentang</a>
-          <a href="#skills" class="nav-link px-4 py-2 text-sm font-medium dark:text-dark-300 text-dark-600 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav_skills">Keahlian</a>
-          <a href="#projects" class="nav-link px-4 py-2 text-sm font-medium dark:text-dark-300 text-dark-600 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav_projects">Proyek</a>
-          <a href="#experience" class="nav-link px-4 py-2 text-sm font-medium dark:text-dark-300 text-dark-600 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav_experience">Pengalaman</a>
-          <a href="#education" class="nav-link px-4 py-2 text-sm font-medium dark:text-dark-300 text-dark-600 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav_education">Pendidikan</a>
-          <a href="#contact" class="nav-link px-4 py-2 text-sm font-medium dark:text-dark-300 text-dark-600 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" data-i18n="nav_contact">Kontak</a>
+          <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-slate-300 hover:text-indigo-300 transition-colors" data-i18n="nav_about">Tentang</a>
+          <a href="#skills" class="nav-link px-4 py-2 text-sm font-medium text-slate-300 hover:text-indigo-300 transition-colors" data-i18n="nav_skills">Keahlian</a>
+          <a href="#projects" class="nav-link px-4 py-2 text-sm font-medium text-slate-300 hover:text-indigo-300 transition-colors" data-i18n="nav_projects">Proyek</a>
+          <a href="#experience" class="nav-link px-4 py-2 text-sm font-medium text-slate-300 hover:text-indigo-300 transition-colors" data-i18n="nav_experience">Pengalaman</a>
+          <a href="#education" class="nav-link px-4 py-2 text-sm font-medium text-slate-300 hover:text-indigo-300 transition-colors" data-i18n="nav_education">Pendidikan</a>
+          <a href="#contact" class="nav-link px-4 py-2 text-sm font-medium text-slate-300 hover:text-indigo-300 transition-colors" data-i18n="nav_contact">Kontak</a>
 
           <!-- Theme Toggle -->
-          <button id="themeToggle" class="ml-2 p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors" aria-label="Toggle theme">
+          <button id="themeToggle" class="ml-2 p-2 rounded-lg hover:bg-white/5 transition-colors" aria-label="Toggle theme">
             <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-dark-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           </button>
 
           <!-- Language Toggle -->
-          <button id="langToggle" class="ml-1 px-3 py-1.5 rounded-lg text-sm font-mono font-bold bg-primary-100 dark:bg-dark-800 text-primary-700 dark:text-primary-400 hover:bg-primary-200 dark:hover:bg-dark-700 transition-all" aria-label="Toggle language">
+          <button id="langToggle" class="ml-1 px-3 py-1.5 rounded-lg text-sm font-mono font-bold bg-white/5 text-indigo-200 hover:bg-white/10 transition-all" aria-label="Toggle language">
             EN
           </button>
         </div>
 
         <!-- Mobile Menu Button -->
         <div class="md:hidden flex items-center gap-2">
-          <button id="themeToggleMobile" class="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors">
-            <svg class="w-5 h-5 dark:hidden text-dark-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-            <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <button id="themeToggleMobile" class="p-2 rounded-lg hover:bg-white/5 transition-colors">
+            <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646A9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           </button>
-          <button id="langToggleMobile" class="px-2 py-1 rounded-lg text-sm font-mono font-bold bg-primary-100 dark:bg-dark-800 text-primary-700 dark:text-primary-400">EN</button>
-          <button id="mobileMenuBtn" class="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors">
+          <button id="langToggleMobile" class="px-2 py-1 rounded-lg text-sm font-mono font-bold bg-white/5 text-indigo-200">EN</button>
+          <button id="mobileMenuBtn" class="p-2 rounded-lg hover:bg-white/5 transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
         </div>
@@ -74,14 +73,14 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="md:hidden hidden bg-white/95 dark:bg-dark-900/95 glass border-t border-dark-200 dark:border-dark-800">
+    <div id="mobileMenu" class="md:hidden hidden bg-[#060816]/95 glass border-t border-white/10 backdrop-blur-xl">
       <div class="px-4 py-4 space-y-2">
-        <a href="#about" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors" data-i18n="nav_about">Tentang</a>
-        <a href="#skills" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors" data-i18n="nav_skills">Keahlian</a>
-        <a href="#projects" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors" data-i18n="nav_projects">Proyek</a>
-        <a href="#experience" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors" data-i18n="nav_experience">Pengalaman</a>
-        <a href="#education" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors" data-i18n="nav_education">Pendidikan</a>
-        <a href="#contact" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors" data-i18n="nav_contact">Kontak</a>
+        <a href="#about" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors" data-i18n="nav_about">Tentang</a>
+        <a href="#skills" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors" data-i18n="nav_skills">Keahlian</a>
+        <a href="#projects" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors" data-i18n="nav_projects">Proyek</a>
+        <a href="#experience" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors" data-i18n="nav_experience">Pengalaman</a>
+        <a href="#education" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors" data-i18n="nav_education">Pendidikan</a>
+        <a href="#contact" class="block px-4 py-3 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors" data-i18n="nav_contact">Kontak</a>
       </div>
     </div>
   </nav>
@@ -92,53 +91,53 @@
     <div id="particles" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
     <!-- Background decorative elements -->
-    <div class="absolute top-20 left-10 w-72 h-72 bg-primary-400/10 dark:bg-primary-400/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent-400/10 dark:bg-accent-400/5 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-400/5 rounded-full blur-3xl"></div>
+    <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500/5 rounded-full blur-3xl"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left Content -->
         <div class="order-2 lg:order-1">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 mb-6" style="animation: fadeInUp 0.6s ease forwards">
-            <span class="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></span>
-            <span class="text-sm font-medium text-primary-700 dark:text-primary-300" data-i18n="hero_status">Tersedia untuk peluang baru</span>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md" style="animation: fadeInUp 0.6s ease forwards">
+            <span class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></span>
+            <span class="text-sm font-medium text-indigo-200" data-i18n="hero_status">Tersedia untuk peluang baru</span>
           </div>
 
           <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.1] mb-4" style="animation: fadeInUp 0.6s 0.1s ease forwards; opacity:0">
-            <span class="dark:text-dark-100 text-dark-900">Hi, Saya</span><br>
+            <span class="text-slate-100">Hi, Saya</span><br>
             <span class="gradient-text">Daniel Sinambela</span>
           </h1>
 
           <div class="mb-6" style="animation: fadeInUp 0.6s 0.2s ease forwards; opacity:0">
             <div class="inline-flex items-center gap-3">
               <span class="h-px w-12 bg-gradient-to-r from-primary-500 to-accent-500"></span>
-              <p class="text-xl sm:text-2xl font-medium text-dark-500 dark:text-dark-400" data-i18n="hero_role">Mahasiswa D4 Teknologi Informasi</p>
+              <p class="text-xl sm:text-2xl font-medium text-slate-300" data-i18n="hero_role">Mahasiswa D4 Teknologi Informasi</p>
             </div>
           </div>
 
-          <p class="text-lg sm:text-xl text-dark-600 dark:text-dark-400 leading-relaxed mb-8 max-w-xl" style="animation: fadeInUp 0.6s 0.3s ease forwards; opacity:0" data-i18n="hero_desc">
-            Passionate dalam membangun solusi teknologi yang berdampak, dengan fokus pada <span class="font-semibold text-primary-600 dark:text-primary-400">Software Engineering</span> dan <span class="font-semibold text-accent-600 dark:text-accent-400">Data Engineering</span>.
+          <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8 max-w-xl" style="animation: fadeInUp 0.6s 0.3s ease forwards; opacity:0" data-i18n="hero_desc">
+            Passionate dalam membangun solusi teknologi yang berdampak, dengan fokus pada <span class="font-semibold text-indigo-300">Software Engineering</span> dan <span class="font-semibold text-fuchsia-300">Data Engineering</span>.
           </p>
 
           <div class="flex flex-wrap gap-4" style="animation: fadeInUp 0.6s 0.4s ease forwards; opacity:0">
-            <a href="#projects" class="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:from-primary-500 hover:to-primary-600 transition-all duration-300">
+            <a href="#projects" class="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:from-indigo-500 hover:to-violet-500 transition-all duration-300">
               <span data-i18n="hero_cta_projects">Lihat Proyek</span>
               <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
-            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-dark-200 dark:border-dark-700 font-semibold hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">
+            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-white/15 font-semibold text-slate-200 hover:border-indigo-400 hover:text-indigo-300 transition-all duration-300">
               <span data-i18n="hero_cta_contact">Hubungi Saya</span>
             </a>
           </div>
 
           <!-- Tech stack preview -->
           <div class="mt-10 flex items-center gap-3 flex-wrap" style="animation: fadeInUp 0.6s 0.5s ease forwards; opacity:0">
-            <span class="text-sm text-dark-400 dark:text-dark-500 font-medium">Tech:</span>
-            <span class="px-3 py-1 rounded-md bg-dark-100 dark:bg-dark-800 text-xs font-mono font-semibold text-dark-600 dark:text-dark-300">Java</span>
-            <span class="px-3 py-1 rounded-md bg-dark-100 dark:bg-dark-800 text-xs font-mono font-semibold text-dark-600 dark:text-dark-300">Python</span>
-            <span class="px-3 py-1 rounded-md bg-dark-100 dark:bg-dark-800 text-xs font-mono font-semibold text-dark-600 dark:text-dark-300">Laravel</span>
-            <span class="px-3 py-1 rounded-md bg-dark-100 dark:bg-dark-800 text-xs font-mono font-semibold text-dark-600 dark:text-dark-300">SQL</span>
-            <span class="px-3 py-1 rounded-md bg-dark-100 dark:bg-dark-800 text-xs font-mono font-semibold text-dark-600 dark:text-dark-300">ML/CNN</span>
+            <span class="text-sm text-slate-400 font-medium">Tech:</span>
+            <span class="px-3 py-1 rounded-md bg-white/5 text-xs font-mono font-semibold text-slate-200 border border-white/10">Java</span>
+            <span class="px-3 py-1 rounded-md bg-white/5 text-xs font-mono font-semibold text-slate-200 border border-white/10">Python</span>
+            <span class="px-3 py-1 rounded-md bg-white/5 text-xs font-mono font-semibold text-slate-200 border border-white/10">Laravel</span>
+            <span class="px-3 py-1 rounded-md bg-white/5 text-xs font-mono font-semibold text-slate-200 border border-white/10">SQL</span>
+            <span class="px-3 py-1 rounded-md bg-white/5 text-xs font-mono font-semibold text-slate-200 border border-white/10">ML/CNN</span>
           </div>
         </div>
 
@@ -146,22 +145,22 @@
         <div class="order-1 lg:order-2 flex justify-center" style="animation: fadeInUp 0.8s 0.3s ease forwards; opacity:0">
           <div class="relative">
             <!-- Decorative rings -->
-            <div class="absolute inset-0 -m-4 rounded-full border-2 border-dashed border-primary-300/30 dark:border-primary-600/20 animate-[spin_30s_linear_infinite]"></div>
-            <div class="absolute inset-0 -m-8 rounded-full border border-accent-300/20 dark:border-accent-600/10 animate-[spin_40s_linear_infinite_reverse]"></div>
+            <div class="absolute inset-0 -m-4 rounded-full border-2 border-dashed border-indigo-400/20 animate-[spin_30s_linear_infinite]"></div>
+            <div class="absolute inset-0 -m-8 rounded-full border border-fuchsia-400/10 animate-[spin_40s_linear_infinite_reverse]"></div>
 
             <!-- Avatar -->
-            <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl shadow-primary-500/10 ring-4 ring-white dark:ring-dark-800">
+            <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl shadow-indigo-500/10 ring-4 ring-white/10">
               <img src="11423040.jpeg" alt="Daniel Sinambela" class="w-full h-full object-cover" loading="lazy">
             </div>
 
             <!-- Floating badges -->
-            <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 px-3 py-1.5 rounded-full bg-white dark:bg-dark-800 shadow-lg text-xs font-bold text-primary-600 dark:text-primary-400 animate-[float_3s_ease_in_out_infinite]" style="animation-delay: 0s">
+            <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 px-3 py-1.5 rounded-full bg-[#101225] border border-white/10 shadow-lg text-xs font-bold text-indigo-300 animate-[float_3s_ease_in_out_infinite]" style="animation-delay: 0s">
                D4 TI
             </div>
-            <div class="absolute bottom-8 -left-4 sm:-left-6 px-3 py-1.5 rounded-full bg-white dark:bg-dark-800 shadow-lg text-xs font-bold text-accent-600 dark:text-accent-400 animate-[float_3s_ease_in_out_infinite]" style="animation-delay: 1s">
+            <div class="absolute bottom-8 -left-4 sm:-left-6 px-3 py-1.5 rounded-full bg-[#101225] border border-white/10 shadow-lg text-xs font-bold text-fuchsia-300 animate-[float_3s_ease_in_out_infinite]" style="animation-delay: 1s">
               🤖 ML/CNN
             </div>
-            <div class="absolute top-1/2 -right-6 sm:-right-8 px-3 py-1.5 rounded-full bg-white dark:bg-dark-800 shadow-lg text-xs font-bold text-purple-600 dark:text-purple-400 animate-[float_3s_ease_in_out_infinite]" style="animation-delay: 2s">
+            <div class="absolute top-1/2 -right-6 sm:-right-8 px-3 py-1.5 rounded-full bg-[#101225] border border-white/10 shadow-lg text-xs font-bold text-sky-300 animate-[float_3s_ease_in_out_infinite]" style="animation-delay: 2s">
               📊 SQL
             </div>
           </div>
@@ -170,8 +169,8 @@
 
       <!-- Scroll indicator -->
       <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span class="text-xs text-dark-400 dark:text-dark-500 font-medium" data-i18n="hero_scroll">Scroll ke bawah</span>
-        <svg class="w-5 h-5 text-dark-400 dark:text-dark-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        <span class="text-xs text-slate-400 font-medium" data-i18n="hero_scroll">Scroll ke bawah</span>
+        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
       </div>
     </div>
   </section>
@@ -182,19 +181,19 @@
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left: Code window -->
         <div class="animate-on-scroll from-left order-2 lg:order-1">
-          <div class="code-window shadow-xl">
+          <div class="code-window shadow-2xl shadow-indigo-950/30">
             <div class="code-window-header">
               <div class="code-dot bg-red-500"></div>
               <div class="code-dot bg-yellow-500"></div>
               <div class="code-dot bg-green-500"></div>
-              <span class="text-xs text-dark-400 ml-2 font-mono">about_me.py</span>
+              <span class="text-xs text-slate-400 ml-2 font-mono">about_me.py</span>
             </div>
-            <div class="p-6 bg-dark-900 text-sm font-mono leading-relaxed">
-              <div class="text-dark-500"># <span data-i18n="about_code_comment">Perkenalan singkat</span></div>
+            <div class="p-6 bg-[#050816] text-sm font-mono leading-relaxed">
+              <div class="text-slate-500"># <span data-i18n="about_code_comment">Perkenalan singkat</span></div>
               <div><span class="text-purple-400">class</span> <span class="text-yellow-300">DanielSinambela</span>:</div>
               <div class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-orange-300">self</span>):</div>
-              <div class="pl-8"><span class="text-orange-300">self</span>.<span class="text-dark-200">name</span> = <span class="text-green-400">"Daniel Sinambela"</span></div>
-              <div class="pl-8"><span class="text-orange-300">self</span>.<span class="text-dark-200">role</span> = <span class="text-green-400">"<span data-i18n="about_code_role">Mahasiswa D4 Teknologi Informasi</span>"</span></div>
+              <div class="pl-8"><span class="text-orange-300">self</span>.<span class="text-slate-200">name</span> = <span class="text-green-400">"Daniel Sinambela"</span></div>
+              <div class="pl-8"><span class="text-orange-300">self</span>.<span class="text-slate-200">role</span> = <span class="text-green-400">"<span data-i18n="about_code_role">Mahasiswa D4 Teknologi Informasi</span>"</span></div>
               <div class="pl-8"><span class="text-orange-300">self</span>.<span class="text-dark-200">interest</span> = [<span class="text-green-400">"Software Engineering"</span>, <span class="text-green-400">"Data Engineering"</span>]</div>
               <div class="pl-8"><span class="text-orange-300">self</span>.<span class="text-dark-200">languages</span> = [<span class="text-green-400">"Java"</span>, <span class="text-green-400">"Python"</span>, <span class="text-green-400">"PHP"</span>, <span class="text-green-400">"SQL"</span>]</div>
               <div class="pl-8"><span class="text-orange-300">self</span>.<span class="text-dark-200">goal</span> = <span class="text-green-400">"<span data-i18n="about_code_goal">Membangun solusi teknologi yang berdampak</span>"</span></div>
@@ -211,16 +210,16 @@
 
         <!-- Right: About text -->
         <div class="animate-on-scroll from-right order-1 lg:order-2">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 mb-4">
-            <span class="text-xs font-semibold text-primary-600 dark:text-primary-400" data-i18n="about_label">TENTANG SAYA</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4 backdrop-blur-md">
+            <span class="text-xs font-semibold text-indigo-300" data-i18n="about_label">TENTANG SAYA</span>
           </div>
 
-          <h2 class="text-3xl sm:text-4xl font-bold mb-6 dark:text-dark-100 text-dark-900">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white">
             <span data-i18n="about_title">Membangun Masa Depan</span><br>
             <span class="gradient-text" data-i18n="about_title_accent">Melalui Teknologi</span>
           </h2>
 
-          <div class="space-y-4 text-dark-600 dark:text-dark-400 leading-relaxed">
+          <div class="space-y-4 text-slate-300 leading-relaxed">
             <p data-i18n="about_p1">
               Saya adalah mahasiswa program D4 Teknologi Informasi dengan minat kuat di bidang Software Engineering dan Data Engineering. Memiliki pengalaman dalam pengembangan aplikasi web menggunakan Laravel, pemrograman Java/JavaFX, serta implementasi machine learning dengan Convolutional Neural Network (CNN).
             </p>
@@ -230,18 +229,18 @@
           </div>
 
           <!-- Stats -->
-          <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-dark-200 dark:border-dark-800">
+          <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-white/10">
             <div>
-              <div class="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400">3+</div>
-              <div class="text-sm text-dark-500 dark:text-dark-500 mt-1" data-i18n="about_stat_projects">Proyek Selesai</div>
+              <div class="text-2xl sm:text-3xl font-bold text-indigo-300">3+</div>
+              <div class="text-sm text-slate-400 mt-1" data-i18n="about_stat_projects">Proyek Selesai</div>
             </div>
             <div>
-              <div class="text-2xl sm:text-3xl font-bold text-accent-600 dark:text-accent-400">5+</div>
-              <div class="text-sm text-dark-500 dark:text-dark-500 mt-1" data-i18n="about_stat_skills">Teknologi Dipelajari</div>
+              <div class="text-2xl sm:text-3xl font-bold text-fuchsia-300">5+</div>
+              <div class="text-sm text-slate-400 mt-1" data-i18n="about_stat_skills">Teknologi Dipelajari</div>
             </div>
             <div>
-              <div class="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">D4</div>
-              <div class="text-sm text-dark-500 dark:text-dark-500 mt-1" data-i18n="about_stat_program">Program Studi</div>
+              <div class="text-2xl sm:text-3xl font-bold text-sky-300">D4</div>
+              <div class="text-sm text-slate-400 mt-1" data-i18n="about_stat_program">Program Studi</div>
             </div>
           </div>
         </div>
@@ -792,7 +791,7 @@
             </div>
             <div>
               <label class="block text-sm font-semibold dark:text-dark-200 text-dark-700 mb-2" data-i18n="form_email">Email</label>
-              <input type="email" required class="w-full px-4 py-3 rounded-xl border border-dark-200 dark:border-dark-700 bg-dark-50 dark:bg-dark-900 text-dark-800 dark:text-dark-100 placeholder-dark-400 dark:placeholder-dark-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all text-sm" placeholder="john@example.com">
+              <input type="email" required class="w-full px-4 py-3 rounded-xl border border-dark-200 dark:border-dark-700 bg-dark-50 dark:bg-dark-900 text-dark-800 dark:text-dark-100 placeholder-dark-400 dark:placeholder-dark-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all text-sm" placeholder="john@example.com" data-i18n-placeholder="form_email_ph">
             </div>
             <div>
               <label class="block text-sm font-semibold dark:text-dark-200 text-dark-700 mb-2" data-i18n="form_subject">Subjek</label>

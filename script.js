@@ -94,9 +94,13 @@ const translations = {
     contact_title: 'Mari Terhubung',
     contact_subtitle: 'Tertarik untuk berkolaborasi atau memiliki pertanyaan? Jangan ragu untuk menghubungi saya.',
     form_name: 'Nama Lengkap',
+    form_name_ph: 'Nama Anda',
     form_email: 'Email',
+    form_email_ph: 'email@contoh.com',
     form_subject: 'Subjek',
+    form_subject_ph: 'Subjek pesan',
     form_message: 'Pesan',
+    form_message_ph: 'Tulis pesan Anda di sini...',
     form_submit: 'Kirim Pesan',
     form_success: 'Pesan berhasil dikirim! Saya akan segera merespons.',
     footer_rights: 'All rights reserved.',
@@ -195,9 +199,13 @@ const translations = {
     contact_title: 'Let\'s Connect',
     contact_subtitle: 'Interested in collaborating or have questions? Don\'t hesitate to reach out.',
     form_name: 'Full Name',
+    form_name_ph: 'Your name',
     form_email: 'Email',
+    form_email_ph: 'name@example.com',
     form_subject: 'Subject',
+    form_subject_ph: 'Message subject',
     form_message: 'Message',
+    form_message_ph: 'Write your message here...',
     form_submit: 'Send Message',
     form_success: 'Message sent successfully! I will respond shortly.',
     footer_rights: 'All rights reserved.',
@@ -244,8 +252,10 @@ function toggleTheme() {
   localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 }
 
-// Load saved theme
-if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+// Load saved theme, default to dark to match the reference portfolio theme
+if (localStorage.getItem('theme') === 'light') {
+  document.documentElement.classList.remove('dark');
+} else {
   document.documentElement.classList.add('dark');
 }
 
