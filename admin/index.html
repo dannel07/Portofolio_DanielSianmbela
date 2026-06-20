@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.1.0/index.min.css">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #030014;
+      --panel: rgba(10, 12, 28, 0.88);
+      --line: rgba(255,255,255,0.08);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #8b5cf6;
+      --accent-2: #6366f1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(99,102,241,0.22), transparent 30%),
+        radial-gradient(circle at top right, rgba(168,85,247,0.18), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .shell { max-width: 1280px; margin: 0 auto; padding: 24px; }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      margin-bottom: 24px; padding: 20px 24px; border: 1px solid var(--line); border-radius: 24px;
+      background: var(--panel); backdrop-filter: blur(20px); box-shadow: 0 20px 80px rgba(0,0,0,.35);
+    }
+    .brand h1 { margin: 0; font-size: 20px; }
+    .brand p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      border: 1px solid var(--line); background: rgba(255,255,255,.04); color: var(--text);
+      padding: 11px 14px; border-radius: 14px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn.primary { background: linear-gradient(135deg, var(--accent-2), var(--accent)); border-color: transparent; }
+    .grid { display: grid; grid-template-columns: 320px 1fr; gap: 18px; }
+    .panel {
+      border: 1px solid var(--line); border-radius: 24px; background: var(--panel); backdrop-filter: blur(20px);
+      padding: 18px;
+    }
+    .nav { display: grid; gap: 10px; }
+    .nav button {
+      width: 100%; text-align: left; padding: 14px 16px; border-radius: 16px; border: 1px solid transparent;
+      background: rgba(255,255,255,.03); color: var(--text); cursor: pointer;
+    }
+    .nav button.active { background: rgba(99,102,241,.18); border-color: rgba(99,102,241,.35); }
+    .section-title { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom: 14px; }
+    .section-title h2 { margin: 0; font-size: 18px; }
+    .section-title span { color: var(--muted); font-size: 13px; }
+    .form-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    .field { display:grid; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: 13px; color: #cbd5e1; }
+    input, textarea, select {
+      width: 100%; border: 1px solid var(--line); background: rgba(255,255,255,.03); color: var(--text);
+      padding: 12px 14px; border-radius: 14px; outline: none;
+    }
+    textarea { min-height: 92px; resize: vertical; }
+    .table { display:grid; gap: 12px; }
+    .card-row {
+      border: 1px solid var(--line); border-radius: 18px; padding: 14px; background: rgba(255,255,255,.03);
+      display:flex; justify-content:space-between; gap: 12px; align-items:flex-start;
+    }
+    .card-row strong { display:block; margin-bottom: 4px; }
+    .meta { color: var(--muted); font-size: 13px; }
+    .row-actions { display:flex; gap: 8px; flex-wrap: wrap; }
+    .pill { font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--line); color: #cbd5e1; }
+    .status { margin-left:auto; font-size: 13px; color: #cbd5e1; }
+    .hidden { display:none !important; }
+    .notice { padding: 14px 16px; border-radius: 16px; margin-bottom: 16px; border: 1px solid rgba(99,102,241,.25); background: rgba(99,102,241,.12); color: #dbeafe; }
+    @media (max-width: 1024px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } .topbar { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">
+        <h1>Portfolio Admin</h1>
+        <p>Use an admin token to manage projects, certificates, and technologies on Cloudflare D1.</p>
+      </div>
+      <div class="actions">
+        <input id="adminTokenInput" class="btn" type="password" placeholder="Admin token" style="min-width:220px;">
+        <button class="btn primary" id="saveTokenBtn" type="button">Save Token</button>
+        <a class="btn" href="/">View Portfolio</a>
+      </div>
+    </div>
+
+    <div id="authNotice" class="notice">Masukkan admin token dari environment Cloudflare untuk mengaktifkan tambah data.</div>
+
+    <div class="grid">
+      <aside class="panel">
+        <div class="nav">
+          <button class="active" data-tab="projects">Projects</button>
+          <button data-tab="certificates">Certificates</button>
+          <button data-tab="technologies">Technologies</button>
+        </div>
+      </aside>
+
+      <main class="panel">
+        <section id="projectsTab">
+          <div class="section-title"><h2>Projects</h2><span id="projectsCount">0 items</span></div>
+          <form id="projectForm">
+            <div class="form-grid">
+              <div class="field"><label>Slug</label><input name="slug" required></div>
+              <div class="field"><label>Badge</label><input name="badge" value="WEB" required></div>
+              <div class="field"><label>Accent</label><input name="accent" value="indigo" required></div>
+              <div class="field"><label>Sort Order</label><input name="sortOrder" type="number" value="0"></div>
+              <div class="field full"><label>Title ID</label><input name="titleId" required></div>
+              <div class="field full"><label>Title EN</label><input name="titleEn" required></div>
+              <div class="field full"><label>Description ID</label><textarea name="descriptionId" required></textarea></div>
+              <div class="field full"><label>Description EN</label><textarea name="descriptionEn" required></textarea></div>
+              <div class="field full"><label>Role ID</label><input name="roleId" required></div>
+              <div class="field full"><label>Role EN</label><input name="roleEn" required></div>
+              <div class="field full"><label>Features ID (comma separated)</label><input name="featuresId" placeholder="Feature 1, Feature 2"></div>
+              <div class="field full"><label>Features EN (comma separated)</label><input name="featuresEn" placeholder="Feature 1, Feature 2"></div>
+              <div class="field full"><label>Tech (comma separated)</label><input name="tech" placeholder="Laravel, MySQL, PHP"></div>
+              <div class="field full"><label>Demo URL</label><input name="demoUrl"></div>
+              <div class="field full"><label>GitHub URL</label><input name="githubUrl"></div>
+            </div>
+            <div class="actions" style="margin-top:14px;">
+              <button class="btn primary" type="submit">Save Project</button>
+              <button class="btn" type="reset">Reset</button>
+            </div>
+          </form>
+          <div id="projectsList" class="table" style="margin-top:18px;"></div>
+        </section>
+
+        <section id="certificatesTab" class="hidden">
+          <div class="section-title"><h2>Certificates</h2><span id="certificatesCount">0 items</span></div>
+          <form id="certificateForm">
+            <div class="form-grid">
+              <div class="field full"><label>Title ID</label><input name="titleId" required></div>
+              <div class="field full"><label>Title EN</label><input name="titleEn" required></div>
+              <div class="field full"><label>Provider ID</label><input name="providerId" required></div>
+              <div class="field full"><label>Provider EN</label><input name="providerEn" required></div>
+              <div class="field"><label>Year</label><input name="year" required></div>
+              <div class="field"><label>Sort Order</label><input name="sortOrder" type="number" value="0"></div>
+            </div>
+            <div class="actions" style="margin-top:14px;">
+              <button class="btn primary" type="submit">Save Certificate</button>
+              <button class="btn" type="reset">Reset</button>
+            </div>
+          </form>
+          <div id="certificatesList" class="table" style="margin-top:18px;"></div>
+        </section>
+
+        <section id="technologiesTab" class="hidden">
+          <div class="section-title"><h2>Technologies</h2><span id="technologiesCount">0 items</span></div>
+          <form id="technologyForm">
+            <div class="form-grid">
+              <div class="field"><label>Category</label><select name="category"><option value="language">language</option><option value="framework">framework</option><option value="tool">tool</option></select></div>
+              <div class="field"><label>Weight</label><input name="weight" type="number" value="0"></div>
+              <div class="field"><label>Sort Order</label><input name="sortOrder" type="number" value="0"></div>
+              <div class="field"><label>Published</label><select name="published"><option value="1">Yes</option><option value="0">No</option></select></div>
+              <div class="field full"><label>Label ID</label><input name="labelId" required></div>
+              <div class="field full"><label>Label EN</label><input name="labelEn" required></div>
+            </div>
+            <div class="actions" style="margin-top:14px;">
+              <button class="btn primary" type="submit">Save Technology</button>
+              <button class="btn" type="reset">Reset</button>
+            </div>
+          </form>
+          <div id="technologiesList" class="table" style="margin-top:18px;"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const state = { projects: [], certificates: [], technologies: [], user: null };
+
+    const qs = (sel) => document.querySelector(sel);
+    const qsa = (sel) => Array.from(document.querySelectorAll(sel));
+
+    async function request(url, options = {}) {
+      const token = localStorage.getItem('adminToken') || '';
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['x-admin-token'] = token;
+      }
+      const response = await fetch(url, {
+        headers,
+        credentials: 'include',
+        ...options
+      });
+      if (!response.ok) throw new Error(await response.text());
+      return response.status === 204 ? null : response.json();
+    }
+
+    function toArray(value) {
+      return value.split(',').map(item => item.trim()).filter(Boolean);
+    }
+
+    function refreshAuthNotice() {
+      const token = localStorage.getItem('adminToken') || '';
+      qs('#authNotice').textContent = token
+        ? 'Admin token tersimpan. Kamu bisa menambah data ke D1.'
+        : 'Masukkan admin token dari environment Cloudflare untuk mengaktifkan tambah data.';
+    }
+
+    function renderLists() {
+      qs('#projectsCount').textContent = `${state.projects.length} items`;
+      qs('#certificatesCount').textContent = `${state.certificates.length} items`;
+      qs('#technologiesCount').textContent = `${state.technologies.length} items`;
+
+      qs('#projectsList').innerHTML = state.projects.map(item => `
+        <div class="card-row">
+          <div>
+            <strong>${item.title_id}</strong>
+            <div class="meta">${item.badge} • ${item.accent} • ${item.role_id}</div>
+            <div class="meta" style="margin-top:6px;">${item.demo_url || 'No demo URL'} | ${item.github_url || 'No GitHub URL'}</div>
+          </div>
+          <div class="row-actions">
+            <span class="pill">#${item.sort_order}</span>
+            <span class="pill">${item.published ? 'Published' : 'Hidden'}</span>
+          </div>
+        </div>
+      `).join('') || '<div class="meta">Belum ada data project.</div>';
+
+      qs('#certificatesList').innerHTML = state.certificates.map(item => `
+        <div class="card-row">
+          <div>
+            <strong>${item.title_id}</strong>
+            <div class="meta">${item.provider_id}</div>
+            <div class="meta" style="margin-top:6px;">${item.year}</div>
+          </div>
+          <div class="row-actions">
+            <span class="pill">#${item.sort_order}</span>
+            <span class="pill">${item.published ? 'Published' : 'Hidden'}</span>
+          </div>
+        </div>
+      `).join('') || '<div class="meta">Belum ada data sertifikat.</div>';
+
+      qs('#technologiesList').innerHTML = state.technologies.map(item => `
+        <div class="card-row">
+          <div>
+            <strong>${item.label_id}</strong>
+            <div class="meta">${item.category} • weight ${item.weight}</div>
+          </div>
+          <div class="row-actions">
+            <span class="pill">#${item.sort_order}</span>
+            <span class="pill">${item.published ? 'Published' : 'Hidden'}</span>
+          </div>
+        </div>
+      `).join('') || '<div class="meta">Belum ada data teknologi.</div>';
+    }
+
+    async function loadData() {
+      const portfolio = await request('/api/portfolio');
+      state.projects = portfolio.projects || [];
+      state.certificates = portfolio.certificates || [];
+      state.technologies = portfolio.technologies || [];
+      renderLists();
+    }
+
+    qsa('.nav button').forEach(button => {
+      button.addEventListener('click', () => {
+        qsa('.nav button').forEach(el => el.classList.remove('active'));
+        button.classList.add('active');
+        qs('#projectsTab').classList.add('hidden');
+        qs('#certificatesTab').classList.add('hidden');
+        qs('#technologiesTab').classList.add('hidden');
+        qs(`#${button.dataset.tab}Tab`).classList.remove('hidden');
+      });
+    });
+
+    qs('#projectForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = new FormData(event.target);
+      await request('/api/projects', {
+        method: 'POST',
+        body: JSON.stringify({
+          slug: form.get('slug'),
+          badge: form.get('badge'),
+          accent: form.get('accent'),
+          titleId: form.get('titleId'),
+          titleEn: form.get('titleEn'),
+          descriptionId: form.get('descriptionId'),
+          descriptionEn: form.get('descriptionEn'),
+          roleId: form.get('roleId'),
+          roleEn: form.get('roleEn'),
+          featuresId: toArray(form.get('featuresId') || ''),
+          featuresEn: toArray(form.get('featuresEn') || ''),
+          tech: toArray(form.get('tech') || ''),
+          demoUrl: form.get('demoUrl'),
+          githubUrl: form.get('githubUrl'),
+          sortOrder: form.get('sortOrder'),
+          published: true
+        })
+      });
+      event.target.reset();
+      await loadData();
+    });
+
+    qs('#certificateForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = new FormData(event.target);
+      await request('/api/certificates', {
+        method: 'POST',
+        body: JSON.stringify({
+          titleId: form.get('titleId'),
+          titleEn: form.get('titleEn'),
+          providerId: form.get('providerId'),
+          providerEn: form.get('providerEn'),
+          year: form.get('year'),
+          sortOrder: form.get('sortOrder'),
+          published: true
+        })
+      });
+      event.target.reset();
+      await loadData();
+    });
+
+    qs('#technologyForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = new FormData(event.target);
+      await request('/api/technologies', {
+        method: 'POST',
+        body: JSON.stringify({
+          category: form.get('category'),
+          labelId: form.get('labelId'),
+          labelEn: form.get('labelEn'),
+          weight: form.get('weight'),
+          sortOrder: form.get('sortOrder'),
+          published: form.get('published') === '1'
+        })
+      });
+      event.target.reset();
+      await loadData();
+    });
+
+    qs('#saveTokenBtn').addEventListener('click', async () => {
+      localStorage.setItem('adminToken', qs('#adminTokenInput').value.trim());
+      refreshAuthNotice();
+      await loadData();
+    });
+
+    qs('#adminTokenInput').value = localStorage.getItem('adminToken') || '';
+    refreshAuthNotice();
+    loadData().catch(error => {
+      qs('#authNotice').textContent = 'Cloudflare D1 API belum aktif atau binding belum dikonfigurasi.';
+      console.error(error);
+    });
+  </script>
+</body>
+</html>

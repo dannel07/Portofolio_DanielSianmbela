@@ -41,6 +41,11 @@ const translations = {
     projects_label: 'PROYEK UNGGULAN',
     projects_title: 'Proyek Terbaik Saya',
     projects_subtitle: 'Koleksi proyek yang menunjukkan kemampuan teknis dan solusi yang saya bangun.',
+    proj_detail: 'Detail Proyek',
+    proj_demo: 'Live Demo',
+    proj_github: 'GitHub',
+    proj_close: 'Tutup',
+    proj_demo_unavailable: 'Live demo belum tersedia',
     proj_tech: 'Teknologi:',
     proj_features: 'Fitur Utama:',
     proj_role: 'Peran:',
@@ -149,6 +154,11 @@ const translations = {
     projects_label: 'FEATURED PROJECTS',
     projects_title: 'My Best Projects',
     projects_subtitle: 'A collection of projects that showcase my technical capabilities and solutions.',
+    proj_detail: 'Project Detail',
+    proj_demo: 'Live Demo',
+    proj_github: 'GitHub',
+    proj_close: 'Close',
+    proj_demo_unavailable: 'Live demo not available yet',
     proj_tech: 'Technologies:',
     proj_features: 'Key Features:',
     proj_role: 'Role:',
@@ -220,6 +230,115 @@ const translations = {
 
 let currentLang = 'id';
 
+let portfolioState = {
+  projects: [],
+  certificates: [],
+  technologies: []
+};
+
+const projectData = {
+  project1: {
+    titleKey: 'proj1_title',
+    descKey: 'proj1_desc',
+    roleKey: 'proj1_role',
+    badge: 'WEB',
+    tech: ['Laravel', 'REST API', 'MySQL', 'PHP'],
+    features: ['proj1_f1', 'proj1_f2', 'proj1_f3'],
+    demoUrl: '',
+    githubUrl: ''
+  },
+  project2: {
+    titleKey: 'proj2_title',
+    descKey: 'proj2_desc',
+    roleKey: 'proj2_role',
+    badge: 'ML/AI',
+    tech: ['Python', 'CNN', 'TensorFlow', 'OpenCV'],
+    features: ['proj2_f1', 'proj2_f2', 'proj2_f3'],
+    demoUrl: '',
+    githubUrl: ''
+  },
+  project3: {
+    titleKey: 'proj3_title',
+    descKey: 'proj3_desc',
+    roleKey: 'proj3_role',
+    badge: 'DESKTOP',
+    tech: ['Java', 'JavaFX', 'MySQL', 'JDBC'],
+    features: ['proj3_f1', 'proj3_f2', 'proj3_f3'],
+    demoUrl: '',
+    githubUrl: ''
+  }
+};
+
+const fallbackPortfolioData = {
+  projects: [
+    {
+      slug: 'sistem-monitoring-perkuliahan',
+      badge: 'WEB',
+      accent: 'indigo',
+      title_id: 'Sistem Monitoring Perkuliahan',
+      title_en: 'Course Monitoring System',
+      description_id: 'Platform monitoring perkuliahan berbasis API RESTful menggunakan Laravel, memungkinkan tracking kehadiran, jadwal, dan progress akademik secara real-time.',
+      description_en: 'A course monitoring platform built with RESTful API and Laravel, enabling real-time tracking of attendance, schedules, and academic progress.',
+      role_id: 'Full-stack Developer',
+      role_en: 'Full-stack Developer',
+      features_id: ['Tracking kehadiran mahasiswa', 'Dashboard progress akademik', 'REST API untuk integrasi'],
+      features_en: ['Student attendance tracking', 'Academic progress dashboard', 'REST API for integration'],
+      tech: ['Laravel', 'REST API', 'MySQL', 'PHP'],
+      demo_url: '',
+      github_url: ''
+    },
+    {
+      slug: 'deteksi-daun-cnn',
+      badge: 'ML/AI',
+      accent: 'emerald',
+      title_id: 'Deteksi Daun Kering vs Segar (CNN)',
+      title_en: 'Dry vs Fresh Leaf Detection (CNN)',
+      description_id: 'Implementasi Convolutional Neural Network (CNN) untuk mendeteksi dan mengklasifikasikan kondisi daun (kering atau segar) berdasarkan citra digital dengan akurasi tinggi.',
+      description_en: 'Implementation of Convolutional Neural Network (CNN) to detect and classify leaf conditions (dry or fresh) from digital images with high accuracy.',
+      role_id: 'ML Engineer',
+      role_en: 'ML Engineer',
+      features_id: ['Klasifikasi citra daun otomatis', 'Preprocessing & augmentasi data', 'Visualisasi model performance'],
+      features_en: ['Automatic leaf image classification', 'Data preprocessing & augmentation', 'Model performance visualization'],
+      tech: ['Python', 'CNN', 'TensorFlow', 'OpenCV'],
+      demo_url: '',
+      github_url: ''
+    },
+    {
+      slug: 'aplikasi-manajemen-produk-javafx',
+      badge: 'DESKTOP',
+      accent: 'violet',
+      title_id: 'Aplikasi Manajemen Produk (JavaFX)',
+      title_en: 'Product Management App (JavaFX)',
+      description_id: 'Aplikasi desktop untuk manajemen produk dengan CRUD operations lengkap, terhubung dengan database MySQL. Dilengkapi dengan fitur pencarian, filter, dan laporan.',
+      description_en: 'A desktop application for product management with complete CRUD operations, connected to a MySQL database. Equipped with search, filter, and reporting features.',
+      role_id: 'Desktop Developer',
+      role_en: 'Desktop Developer',
+      features_id: ['CRUD produk lengkap', 'Pencarian & filter data', 'Laporan & export data'],
+      features_en: ['Complete product CRUD', 'Data search & filtering', 'Reports & data export'],
+      tech: ['Java', 'JavaFX', 'MySQL', 'JDBC'],
+      demo_url: '',
+      github_url: ''
+    }
+  ],
+  certificates: [
+    { title_id: 'Web Development with Laravel', title_en: 'Web Development with Laravel', provider_id: 'Platform: Dicoding Indonesia', provider_en: 'Platform: Dicoding Indonesia', year: '2024' },
+    { title_id: 'Machine Learning Fundamentals', title_en: 'Machine Learning Fundamentals', provider_id: 'Platform: Coursera', provider_en: 'Platform: Coursera', year: '2024' },
+    { title_id: 'Database Management Systems', title_en: 'Database Management Systems', provider_id: 'Platform: Bangkit Academy', provider_en: 'Platform: Bangkit Academy', year: '2023' }
+  ],
+  technologies: [
+    { label_id: 'Java', label_en: 'Java', weight: 85 },
+    { label_id: 'Python', label_en: 'Python', weight: 80 },
+    { label_id: 'PHP', label_en: 'PHP', weight: 75 },
+    { label_id: 'SQL', label_en: 'SQL', weight: 80 },
+    { label_id: 'Laravel', label_en: 'Laravel', weight: 80 },
+    { label_id: 'JavaFX', label_en: 'JavaFX', weight: 75 },
+    { label_id: 'TensorFlow', label_en: 'TensorFlow', weight: 70 },
+    { label_id: 'MySQL', label_en: 'MySQL', weight: 85 },
+    { label_id: 'Git & GitHub', label_en: 'Git & GitHub', weight: 80 },
+    { label_id: 'REST API', label_en: 'REST API', weight: 85 }
+  ]
+};
+
 function setLanguage(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
@@ -252,6 +371,25 @@ function setLanguage(lang) {
     }
   });
 
+  document.querySelectorAll('[data-project-detail]').forEach(button => {
+    button.textContent = translations[lang].proj_detail;
+  });
+  document.querySelectorAll('[data-project-demo-state]').forEach(button => {
+    const projectKey = button.getAttribute('data-project-demo-state');
+    const project = projectData[projectKey];
+    if (project) {
+      button.textContent = project.demoUrl ? translations[lang].proj_demo : translations[lang].proj_demo_unavailable;
+    }
+  });
+  document.querySelectorAll('[data-project-github-state]').forEach(button => {
+    button.textContent = translations[lang].proj_github;
+  });
+  document.querySelectorAll('[data-project-close]').forEach(button => {
+    button.textContent = translations[lang].proj_close;
+  });
+
+  renderPortfolioData();
+
   // Update lang toggle buttons
   const toggleBtn = document.getElementById('langToggle');
   const toggleMobileBtn = document.getElementById('langToggleMobile');
@@ -264,6 +402,72 @@ function setLanguage(lang) {
 function toggleTheme() {
   document.documentElement.classList.toggle('dark');
   localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+}
+
+function renderProjects(projects) {
+  const projectCards = document.querySelectorAll('#projects .project-card');
+  projectCards.forEach((card, index) => {
+    const project = projects[index];
+    if (!project) return;
+
+    const titleNode = card.querySelector('[data-i18n^="proj"][data-i18n$="_title"]');
+    const descNode = card.querySelector('[data-i18n^="proj"][data-i18n$="_desc"]');
+    const roleNode = card.querySelector('[data-i18n^="proj"][data-i18n$="_role"]');
+    const techContainer = card.querySelector(`#project${index + 1}TechList`);
+
+    if (titleNode) titleNode.textContent = currentLang === 'id' ? project.title_id : project.title_en;
+    if (descNode) descNode.textContent = currentLang === 'id' ? project.description_id : project.description_en;
+    if (roleNode) roleNode.textContent = currentLang === 'id' ? project.role_id : project.role_en;
+    if (techContainer) {
+      techContainer.innerHTML = (project.tech || []).map(tech => `
+        <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-xs font-mono font-semibold text-slate-200">${tech}</span>
+      `).join('');
+    }
+  });
+}
+
+function renderCertificates(certificates) {
+  const certCards = [document.getElementById('certCard1'), document.getElementById('certCard2'), document.getElementById('certCard3')];
+  certCards.forEach((card, index) => {
+    const item = certificates[index];
+    if (!card || !item) return;
+    const titleNode = card.querySelector('[data-i18n^="cert"][data-i18n$="_title"]');
+    const providerNode = card.querySelector('[data-i18n^="cert"][data-i18n$="_provider"]');
+    const yearNode = card.querySelector('.font-mono');
+    if (titleNode) titleNode.textContent = currentLang === 'id' ? item.title_id : item.title_en;
+    if (providerNode) providerNode.textContent = currentLang === 'id' ? item.provider_id : item.provider_en;
+    if (yearNode) yearNode.textContent = item.year;
+  });
+}
+
+function renderTechnologies(technologies) {
+  const container = document.getElementById('skillsFrameworkTags');
+  if (!container) return;
+  container.innerHTML = technologies.map(item => `
+    <span class="skill-tag px-3 py-1.5 rounded-lg bg-accent-50 dark:bg-accent-900/20 text-xs font-semibold text-accent-700 dark:text-accent-300 border border-accent-200 dark:border-accent-800">${currentLang === 'id' ? item.label_id : item.label_en}</span>
+  `).join('');
+}
+
+function renderPortfolioData() {
+  renderProjects(portfolioState.projects.length ? portfolioState.projects : fallbackPortfolioData.projects);
+  renderCertificates(portfolioState.certificates.length ? portfolioState.certificates : fallbackPortfolioData.certificates);
+  renderTechnologies(portfolioState.technologies.length ? portfolioState.technologies : fallbackPortfolioData.technologies);
+}
+
+async function loadPortfolioData() {
+  try {
+    const response = await fetch('/api/portfolio');
+    if (!response.ok) throw new Error('API not available');
+    const data = await response.json();
+    portfolioState.projects = Array.isArray(data.projects) ? data.projects : [];
+    portfolioState.certificates = Array.isArray(data.certificates) ? data.certificates : [];
+    portfolioState.technologies = Array.isArray(data.technologies) ? data.technologies : [];
+  } catch (error) {
+    portfolioState.projects = [];
+    portfolioState.certificates = [];
+    portfolioState.technologies = [];
+  }
+  renderPortfolioData();
 }
 
 // Load saved theme, default to dark to match the reference portfolio theme
@@ -431,5 +635,118 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// ==================== Project Detail Modal ====================
+const projectModal = document.getElementById('projectModal');
+const projectModalTitle = document.getElementById('projectModalTitle');
+const projectModalBadge = document.getElementById('projectModalBadge');
+const projectModalRole = document.getElementById('projectModalRole');
+const projectModalDesc = document.getElementById('projectModalDesc');
+const projectModalTech = document.getElementById('projectModalTech');
+const projectModalFeatures = document.getElementById('projectModalFeatures');
+const projectModalDemo = document.getElementById('projectModalDemo');
+const projectModalGithub = document.getElementById('projectModalGithub');
+const projectModalClose = document.getElementById('projectModalClose');
+
+function closeProjectModal() {
+  if (!projectModal) return;
+  projectModal.classList.add('hidden');
+  document.body.classList.remove('overflow-hidden');
+}
+
+function openProjectModal(projectKey) {
+  const project = projectData[projectKey];
+  if (!project || !projectModal) return;
+
+  projectModalBadge.textContent = project.badge;
+  projectModalTitle.textContent = translations[currentLang][project.titleKey];
+  projectModalRole.textContent = translations[currentLang][project.roleKey];
+  projectModalDesc.textContent = translations[currentLang][project.descKey];
+
+  projectModalTech.innerHTML = project.tech.map(tech => `
+    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono font-semibold text-slate-200">${tech}</span>
+  `).join('');
+
+  projectModalFeatures.innerHTML = project.features.map(featureKey => `
+    <li class="flex items-start gap-2 text-sm text-slate-300">
+      <span class="text-fuchsia-400 mt-0.5">✓</span>
+      <span>${translations[currentLang][featureKey]}</span>
+    </li>
+  `).join('');
+
+  if (project.demoUrl) {
+    projectModalDemo.href = project.demoUrl;
+    projectModalDemo.classList.remove('pointer-events-none', 'opacity-50');
+    projectModalDemo.removeAttribute('aria-disabled');
+  } else {
+    projectModalDemo.href = '#';
+    projectModalDemo.classList.add('pointer-events-none', 'opacity-50');
+    projectModalDemo.setAttribute('aria-disabled', 'true');
+  }
+
+  if (project.githubUrl) {
+    projectModalGithub.href = project.githubUrl;
+    projectModalGithub.classList.remove('pointer-events-none', 'opacity-50');
+    projectModalGithub.removeAttribute('aria-disabled');
+  } else {
+    projectModalGithub.href = '#';
+    projectModalGithub.classList.add('pointer-events-none', 'opacity-50');
+    projectModalGithub.setAttribute('aria-disabled', 'true');
+  }
+
+  projectModalDemo.textContent = project.demoUrl ? translations[currentLang].proj_demo : translations[currentLang].proj_demo_unavailable;
+  projectModalGithub.textContent = translations[currentLang].proj_github;
+  projectModalClose.textContent = translations[currentLang].proj_close;
+
+  projectModal.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+}
+
+document.querySelectorAll('[data-project-trigger]').forEach(button => {
+  button.addEventListener('click', () => openProjectModal(button.getAttribute('data-project-trigger')));
+});
+
+document.querySelectorAll('[data-project-demo-state]').forEach(button => {
+  button.addEventListener('click', () => {
+    const projectKey = button.getAttribute('data-project-demo-state');
+    const project = projectData[projectKey];
+    if (project && project.demoUrl) {
+      window.open(project.demoUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    openProjectModal(projectKey);
+  });
+});
+
+document.querySelectorAll('[data-project-github-state]').forEach(button => {
+  button.addEventListener('click', () => {
+    const projectKey = button.getAttribute('data-project-github-state');
+    const project = projectData[projectKey];
+    if (project && project.githubUrl) {
+      window.open(project.githubUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    openProjectModal(projectKey);
+  });
+});
+
+if (projectModalClose) {
+  projectModalClose.addEventListener('click', closeProjectModal);
+}
+
+if (projectModal) {
+  projectModal.addEventListener('click', event => {
+    if (event.target === projectModal) {
+      closeProjectModal();
+    }
+  });
+}
+
+window.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeProjectModal();
+  }
+});
+
 // Initialize language
 setLanguage('id');
+loadPortfolioData();
